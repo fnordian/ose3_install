@@ -63,7 +63,8 @@ EOF
 chown root:root /root/.ssh/authorized_keys
 chmod 600 /root/.ssh/authorized_keys
 
-# Update the host file 
+# Update the host file
+# FIXME: iterate on ${NODES}
 cat <<EOF > /etc/hosts
 ${IP_PREFIX}.100   master.${DOMAIN_NAME} master
 ${IP_PREFIX}.101   node01.${DOMAIN_NAME} node01
