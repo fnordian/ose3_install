@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This script has currently to be executed manually on the master node in order to execute the openshift installation.
+
 ############ Install ...
 ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
 
@@ -10,6 +12,7 @@ ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
 
 #oadm manage-node ip-172-31-18-252.eu-central-1.compute.internal --schedulable=true
 oc label node master.${DOMAIN_NAME} region=infra zone=default
+# FIXME iterate on all nodes
 oc label node node01.${DOMAIN_NAME} region=primary zone=east
 
 # Create the directory for the registry
@@ -27,9 +30,8 @@ oadm create-server-cert --signer-cert=${CA}/ca.crt --signer-key=${CA}/ca.key --s
 
 cat ${DOMAIN_NAME}.crt ${DOMAIN_NAME}.key ${CA}/ca.crt > ${DOMAIN_NAME}.router.pem
 
+# Will return something like "password for stats user admin has been set to ..."
 oadm router --default-cert=${DOMAIN_NAME}.router.pem --credentials=/etc/openshift/master/openshift-router.kubeconfig --selector='region=infra' --images='registry.access.redhat.com/openshift3/ose-${component}:${version}'
 
-# password for stats user admin has been set to sGildgBwJH
-#http://admin:$YOURPASSWORDHERE@ose3-master.example.com:1936 
-
+# Opens the port in order to be able to access the stats page (http://admin:${YOUR_GENERATED_PASSWORD}@master.${DOMAIN_NAME}:1936)
 iptables -I OS_FIREWALL_ALLOW -p tcp -m tcp --dport 1936 -j ACCEPT
