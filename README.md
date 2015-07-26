@@ -23,7 +23,7 @@ Currently it is still in development and not final.
 	$ ./vagrant_ose_setup.sh
 
 4) Finish the installation
-	
+
 	$ source ./ENV
 	$ vagrant ssh master
 	$ sudo su -
@@ -47,6 +47,7 @@ Background: Need to install it in an environment without Internet connectivity.
 
 - How to destroy and re-create a router / registry?
 Background: after a router / registry has been created, it is not possible anymore to delete it and create a new one:
+
 	Error: deploymentConfig "docker-registry" already exists
 services/docker-registry
 
