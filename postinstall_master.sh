@@ -12,7 +12,7 @@ ansible-playbook ~/openshift-ansible/playbooks/byo/config.yml
 
 #oadm manage-node ip-172-31-18-252.eu-central-1.compute.internal --schedulable=true
 oc label node master.${DOMAIN_NAME} region=infra zone=default
-# FIXME iterate on all nodes
+# FIXME: iterate on ${NODES}
 oc label node node01.${DOMAIN_NAME} region=primary zone=east
 
 # Create the directory for the registry
