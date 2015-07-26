@@ -53,7 +53,7 @@ EOF
 
 # Imports certificates from other matchines
 ssh-keyscan -H master.${DOMAIN_NAME} >> ~/.ssh/known_hosts
-# FIXME: iterate on node number
+# FIXME: iterate on ${NODES}
 ssh-keyscan -H node01.${DOMAIN_NAME} >> ~/.ssh/known_hosts
 
 ## Here are the manual steps to copy the keys on the other servers ... (no more required)
@@ -108,6 +108,7 @@ yum -y --enablerepo=epel install ansible
 cd ;git clone ${OSE_ANSIBLE_GIT_REPO}; cd openshift-ansible; git checkout -b 3.x ${OSE_ANSIBLE_GIT_REPO_BRANCH}
 
 # FIXME: Replace root user by a sudo authorised user
+# FIXME: iterate on ${NODES}
 cat <<EOF > /etc/ansible/hosts
 # Create an OSEv3 group that contains the masters and nodes groups
 [OSEv3:children]
