@@ -40,41 +40,44 @@ Currently it is still in development and not final.
 
 ### Q (open)
 
-- How can I do an offline installation? (pre-load images, rpms, ...)
+- How can I do an offline installation? (pre-load images, rpms, satellite 6, ...)
+Background: Need to install it in an environment without Internet connectivity.
 
 - How can I restrict the images allowed in my repository?
 
 - How to destroy and re-create a router / registry?
+Background: after a router / registry has been created, it is not possible anymore to delete it and create a new one:
+	Error: deploymentConfig "docker-registry" already exists
+services/docker-registry
 
 - What does exit codes (ExitCode:255) mean for images?
 
-[root@master opt]# oc get pods
-NAME                       READY     REASON    RESTARTS   AGE
-docker-registry-1-deploy   0/1       Pending   0          31s
-[root@master opt]# oc get pods
-NAME                       READY     REASON         RESTARTS   AGE
-docker-registry-1-deploy   0/1       ExitCode:255   0          10m
+	[root@master opt]# oc get pods
+	NAME                       READY     REASON    RESTARTS   AGE
+	docker-registry-1-deploy   0/1       Pending   0          31s
+	[root@master opt]# oc get pods
+	NAME                       READY     REASON         RESTARTS   AGE
+	docker-registry-1-deploy   0/1       ExitCode:255   0          10m
 
 
 ### Q&A (answered)
 
-- What are the differences between a docker registry and an openshift registry? Can I use the same storage for both? (ie -.)
+- What are the differences between a docker registry and an openshift registry? Can I use the same storage for both?
 
 	-> docker storage => stores locally the docker images
 	-> openshift registry => instance 
-	
+
 - How do I see the status of the download of the docker images? How do I see why a node is "pending"?
 
-> oc get pods
-> oc describe pod docker-registry-1-deploy
-> oc stop pod docker-registry-1-deploy
-...
-> oc stop svc docker-registry
-> oc delete svc docker-registry
-...
-> oadm registry --config=/etc/openshift/master/admin.kubeconfig --credentials=/etc/openshift/master/openshift-registry.kubeconfig
-Error: deploymentConfig "docker-registry" already exists
-services/docker-registry
+	> oc get pods
+	> oc describe pod docker-registry-1-deploy
+	> oc stop pod docker-registry-1-deploy
+	...
+	> oc stop svc docker-registry
+	> oc delete svc docker-registry
+	...
+	> oadm registry --config=/etc/openshift/master/admin.kubeconfig --credentials=/etc/openshift/master/openshift-registry.kubeconfig
+
 
 - How to use the persistent storage properly?
 
@@ -84,9 +87,9 @@ Cf. https://access.redhat.com/beta/documentation/en/openshift-enterprise-30-admi
 
 - How can I restart OSE?
 
-> systemctl stop openshift-master
-> systemctl start openshift-master
-> systemctl restart openshift-master
+	> systemctl stop openshift-master
+	> systemctl start openshift-master
+	> systemctl restart openshift-master
 
 - Can I install the master witout a node on the same host?
 
@@ -108,8 +111,8 @@ NO!
 
 - Understanding the docker structure http://jackiechen.org/2015/04/20/understanding-docker-directory-structure/
 
-> rpm -ql docker
+	> rpm -ql docker
 
 - Attaching shared storage only works with the guest additions ... and it makes it really difficult to automate it ... (restart required)
 
-> config.vm.synced_folder docker_backup_repository, "/opt/backup_repository"
+	> config.vm.synced_folder docker_backup_repository, "/opt/backup_repository"
