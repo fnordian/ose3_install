@@ -103,17 +103,31 @@ NO!
 
 ## Todo
 
-- Try dns server integrated in vagrant
-- Write autocomplete script for oc and co ...
-- Consider an ansible- based provisioning instead of shell in vagrant ...
+- Try dns server integrated in vagrant (cf. Open Sourcerers)
+
+- Write shell autocomplete script for oc
+
+- Update vagrant provisioning to use ansible instead of shell
+	cf. http://docs.vagrantup.com/v2/provisioning/ansible.html
+	cf. http://docs.ansible.com/ansible/guide_vagrant.html
+	cf. OSE 3 Kickstart
 
 
 ## Notes
 
 - Understanding the docker structure http://jackiechen.org/2015/04/20/understanding-docker-directory-structure/
 
-	> rpm -ql docker
+	 > rpm -ql docker
 
 - Attaching shared storage only works with the guest additions ... and it makes it really difficult to automate it ... (restart required)
 
-	> config.vm.synced_folder docker_backup_repository, "/opt/backup_repository"
+	 > config.vm.synced_folder docker_backup_repository, "/opt/backup_repository"
+
+## Resources
+
+- OSE 3 Ruby Rails Example: https://github.com/openshift/rails-ex
+- OSE 3 Ruby Helloworld: https://github.com/openshift/ruby-hello-world
+- OSE 3 Training: https://github.com/openshift/training
+- OSE 3 Kickstart: https://github.com/juhoffma/openshift-kickstarter
+
+
