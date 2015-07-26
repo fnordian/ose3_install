@@ -129,5 +129,5 @@ NO!
 - OSE 3 Ruby Helloworld: https://github.com/openshift/ruby-hello-world
 - OSE 3 Training: https://github.com/openshift/training
 - OSE 3 Kickstart: https://github.com/juhoffma/openshift-kickstarter
-
+- OSE 3 PHP sample app: https://github.com/openshift/cakephp-ex
 
