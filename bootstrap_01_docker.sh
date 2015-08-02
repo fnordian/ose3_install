@@ -78,6 +78,7 @@ fi
 
 if [ ${PRE_DOWNLOAD_DOCKER_IMAGES} ] ; then
 
+	# cf. https://access.redhat.com/search/#/container-images
 	# Preloads many docker images. This could take a very long time and require a lot of space. 
 	docker pull openshift3/ose-haproxy-router
 	docker pull openshift3/ose-deployer

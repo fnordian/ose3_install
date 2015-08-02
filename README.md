@@ -12,7 +12,8 @@ Currently it is still in development and not final.
 	- Rename ENV.sample to ENV and replace the values by your own
 		$ mv ENV.sample ENV
 		$ vi ENV
-	- Download the RHEL 7.1 virtualbox image (https://access.redhat.com/downloads/content/290/ver=3.0.0.0/rhel---7/3.0.0.0/x86_64/product-downloads)
+	- Download the RHEL 7.1 virtualbox image (https://access.redhat.com/downloads/content/293/ver=1/rhel---7/1.0.1/x86_64/product-downloads)
+	- Download the OSE client (https://access.redhat.com/downloads/content/290/ver=3.0.0.0/rhel---7/3.0.0.0/x86_64/product-downloads)
 	- Install the dowloaded image
 		$ vagrant box add --name rhel-7 ~/install/distributions/RHEL/rhel-server-virtualbox-7.1-3.x86_64.box
 	- (optional) Install the vagrant vbguest plugin
