@@ -46,12 +46,6 @@ Background: Need to install it in an environment without Internet connectivity.
 
 - How can I restrict the images allowed in my repository?
 
-- How to destroy and re-create a router / registry?
-Background: after a router / registry has been created, it is not possible anymore to delete it and create a new one:
-
-	Error: deploymentConfig "docker-registry" already exists
-services/docker-registry
-
 - What does exit codes (ExitCode:255) mean for images?
 
 	[root@master opt]# oc get pods
@@ -100,6 +94,13 @@ NO! The master has to be a node too ...
 - Can I use a shared disk for sharing the docker registries across my nodes?
 
 NO!
+
+- How to destroy and re-create a router / registry?
+
+	oc delete pod docker-registry
+	oc delete service docker-registry
+	oc delete delete deploymentConfig docker-registry
+
 
 
 ## Todo
